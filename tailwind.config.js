@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './app.html'],
+  content: ['./index.html', './app.html', './404.html'],
   darkMode: 'class',
   // app.html builds these class names at runtime from a color variable
   // (macro "g left" pills and Macro Finisher badges), so the scanner can't see them.

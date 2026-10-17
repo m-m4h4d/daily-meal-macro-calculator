@@ -10,7 +10,7 @@ const origin = (process.env.SITE_URL || (host ? `https://${host}` : '')).replace
 fs.rmSync('dist', { recursive: true, force: true });
 fs.mkdirSync('dist/assets', { recursive: true });
 
-for (const file of ['index.html', 'app.html']) {
+for (const file of ['index.html', 'app.html', '404.html']) {
   let html = fs.readFileSync(file, 'utf8');
   if (origin) {
     html = html.replace(
