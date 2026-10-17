@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i src/input.css -o assets/styles.css --minify",
-    "build": "npm run build:css && rm -rf dist && mkdir -p dist/assets && cp index.html app.html favicon.svg dist/ && cp assets/styles.css dist/assets/",
-    "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch"
+    "build": "npm run build:css && node scripts/build.mjs",
+    "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch",
+    "og-image": "node og/render.mjs"
   },
   "devDependencies": {
     "tailwindcss": "3.4.19"
