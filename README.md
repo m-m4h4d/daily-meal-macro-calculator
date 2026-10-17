@@ -9,25 +9,27 @@ A single-page TDEE and macro calculator with a daily meal log, Smart Macro Finis
 | `index.html` | `/` | Landing page |
 | `app.html` | `/app` | The calculator app |
 | `favicon.svg` | `/favicon.svg` | Site icon |
-| `vercel.json` | — | Clean URLs, redirects from the old filename, security headers |
+| `src/input.css` | — | Tailwind entry point |
+| `tailwind.config.js` | — | Tailwind theme, content paths and safelist |
+| `vercel.json` | — | Build settings, clean URLs, redirects, security headers |
+
+Styles are compiled with the Tailwind CLI into `assets/styles.css` (git-ignored). `npm run build` writes the deployable site to `dist/`.
+
+If you add Tailwind classes that are built at runtime from variables (e.g. `` `bg-${color}-500` ``), add them to the `safelist` in `tailwind.config.js`, since the build only keeps classes it can find written out in the HTML.
 
 ## Run locally
 
-Any static server works:
-
 ```bash
-npx serve .
-# or
-python3 -m http.server 8000
+npm install
+npm run dev          # rebuilds assets/styles.css on change
+npx serve .          # in a second terminal, then open http://localhost:3000
 ```
 
-With `python3 -m http.server`, open the app at `/app.html` (clean URLs like `/app` are a Vercel feature; `npx serve` supports them too).
+To check the production build, run `npm run build` and serve `dist/`.
 
 ## Deploy to Vercel
 
-1. Import this repository in the Vercel dashboard (**Add New → Project**).
-2. Framework preset: **Other**. Leave the build command and output directory empty.
-3. Deploy.
+Import the repository in the Vercel dashboard (**Add New → Project**). `vercel.json` sets the build command (`npm run build`) and output directory (`dist`), so no settings need changing.
 
 Or from the CLI:
 
