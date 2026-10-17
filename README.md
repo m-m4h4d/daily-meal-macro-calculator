@@ -8,6 +8,7 @@ A single-page TDEE and macro calculator with a daily meal log, Smart Macro Finis
 | --- | --- | --- |
 | `index.html` | `/` | Landing page |
 | `app.html` | `/app` | The calculator app |
+| `404.html` | any missing path | Not-found page (Vercel serves it automatically) |
 | `favicon.svg` | `/favicon.svg` | Site icon |
 | `og-image.png` | `/og-image.png` | 1200×630 social preview image (source: `og/template.html`) |
 | `scripts/build.mjs` | — | Assembles `dist/` and makes social preview URLs absolute |
