@@ -11,7 +11,7 @@ A single-page TDEE and macro calculator with a daily meal log, Smart Macro Finis
 | `404.html` | any missing path | Not-found page (Vercel serves it automatically) |
 | `favicon.svg` | `/favicon.svg` | Site icon |
 | `og-image.png` | `/og-image.png` | 1200×630 social preview image (source: `og/template.html`) |
-| `scripts/build.mjs` | — | Assembles `dist/` and makes social preview URLs absolute |
+| `scripts/build.mjs` | — | Assembles `dist/`, makes social preview URLs absolute, generates `sitemap.xml` and `robots.txt` |
 | `src/input.css` | — | Tailwind entry point |
 | `tailwind.config.js` | — | Tailwind theme, content paths and safelist |
 | `vercel.json` | — | Build settings, clean URLs, redirects, security headers |
@@ -19,6 +19,10 @@ A single-page TDEE and macro calculator with a daily meal log, Smart Macro Finis
 Styles are compiled with the Tailwind CLI into `assets/styles.css` (git-ignored). `npm run build` writes the deployable site to `dist/`.
 
 If you add Tailwind classes that are built at runtime from variables (e.g. `` `bg-${color}-500` ``), add them to the `safelist` in `tailwind.config.js`, since the build only keeps classes it can find written out in the HTML.
+
+## Sitemap and robots.txt
+
+`npm run build` generates `dist/robots.txt` (allows all crawlers) and `dist/sitemap.xml` (lists `/` and `/app`). Both use the same origin as the social preview URLs below; when no origin is known, `sitemap.xml` is skipped and `robots.txt` has no `Sitemap` line. To list a new page, add its path to `pages` in `scripts/build.mjs`.
 
 ## Social previews
 
